@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyMoney | Record Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="chart-tooltip"></div>
+
+    <nav class="sidebar">
+        <img src="../logo/logo.png" alt="logo image">
+        <ul id="nav">
+            <li class="active" data-section="overview">Overview</li>
+            <li data-section="transactions">Transactions</li>
+            <li data-section="budget">Make budget</li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="summary-grid">
+            <div class="card">
+                <h3>Total Balance</h3>
+                <p>$12,450.00</p>
+            </div>
+            <div class="card">
+                <h3>Monthly Income</h3>
+                <p class="income-text">$5,200.00</p>
+            </div>
+            <div class="card">
+                <h3>Monthly Expenses</h3>
+                <p class="expense-text" id="total-exp-display">$2,100.00</p>
+            </div>
+        </div>
+
+        <div class="dashboard-row">
+            <div class="box" id="overview">
+                <h3 id="expense">Spending Patterns</h3>
+                <div class="chart-wrapper">
+                    <div class="donut-chart" id="mainChart"></div>
+                    <div style="margin-top: 25px; display: flex; gap: 15px; font-size: 13px;">
+                        <span><b style="color:#fbbf24">●</b> Food</span>
+                        <span><b style="color:#38bdf8">●</b> Rent</span>
+                        <span><b style="color:#a855f7">●</b> Fun</span>
+                        <span><b style="color:#94a3b8">●</b> Other</span>
+                    </div>
+                </div>
+                <div class="budget-content" id="budget">
+                <h3>Monthly Budget Tracker</h3>
+                <div >
+                    <div class="form-group" style="border: none; padding: 0;">
+                        <label style="font-size: 13px; color: #64748b;">Set Monthly Goal</label>
+                        <div class="add-form" style="margin-top: 5px;">
+                            <input type="number" id="budget-goal" placeholder="e.g. 5000">
+                            <button onclick="calculateBudget()" style="background: #a855f7;">Set</button>
+                        </div>
+                    </div>
+
+                    <div class="budget-status" style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                            <span style="font-size: 14px;">Budget Usage</span>
+                            <span id="budget-percent" style="font-weight: bold;">0%</span>
+                        </div>
+                        <div
+                            style="width: 100%; height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden;">
+                            <div id="budget-bar"
+                                style="width: 0%; height: 100%; background: #38bdf8; transition: 0.3s;"></div>
+                        </div>
+                        <p id="budget-warning" style="font-size: 12px; margin-top: 10px; color: #64748b;"></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="box" id="transactions">
+                <h3>Recent Transactions</h3>
+                <div class="txn-list" id="txn-container"></div>
+                <div class="form-group">
+                    <h4 style="font-size: 14px; margin-bottom: 10px;">Quick Add Expense</h4>
+                    <div class="add-form">
+                        <input type="text" id="name" placeholder="Item Name">
+                        <input type="number" id="amt" placeholder="Amount ($)">
+                        <select id="cat">
+                            <option value="Food">Food</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Fun">Fun</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <select id="cat">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <button onclick="addNew()">Add Transaction</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p> © 2024 MyMoney All rights reserved
+                    <br>Your journey to financial freedom starts here.
+                    Empowering you to track, save, and grow.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
